@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Building2, Sparkles } from "lucide-react";
+import logoHorizontal from "@/assets/logo-horizontal.png";
 
 const Landing = () => {
   return (
@@ -8,9 +9,9 @@ const Landing = () => {
       <header className="py-6 px-4">
         <div className="max-w-5xl mx-auto flex justify-center">
           <img 
-            src="/src/assets/logo.png" 
+            src={logoHorizontal} 
             alt="الرمز العقارية" 
-            className="h-16 md:h-20 object-contain"
+            className="h-20 md:h-24 object-contain drop-shadow-lg"
           />
         </div>
       </header>

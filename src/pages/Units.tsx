@@ -6,6 +6,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import project1 from "@/assets/project-1.webp";
+import project2 from "@/assets/project-2.webp";
+import project3 from "@/assets/project-3.png";
+import project4 from "@/assets/project-4.webp";
 
 type Unit = {
   id: string;
@@ -53,6 +57,7 @@ const Units = () => {
       available: 18,
       status: "متاح",
       deliveryDate: "يونيو 2026",
+      image: project4,
     },
     {
       id: "2",
@@ -72,6 +77,7 @@ const Units = () => {
       available: 438,
       status: "إطلاق قريب",
       deliveryDate: "قريباً",
+      image: project1,
     },
   ];
 
@@ -127,9 +133,13 @@ const Units = () => {
               className="card-brand hover-lift animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Unit Image Placeholder */}
-              <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl mb-4 flex items-center justify-center">
-                <Home className="w-16 h-16 text-primary/40" />
+              {/* Unit Image */}
+              <div className="w-full h-48 rounded-xl mb-4 overflow-hidden">
+                <img 
+                  src={unit.image} 
+                  alt={unit.name}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
               {/* Unit Info */}

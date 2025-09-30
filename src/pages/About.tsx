@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import { Award, Building, Users, TrendingUp, ArrowLeft } from "lucide-react";
+import project1 from "@/assets/project-1.webp";
+import project2 from "@/assets/project-2.webp";
+import project3 from "@/assets/project-3.png";
+import project5 from "@/assets/project-5.jpg";
 
 const About = () => {
   const achievements = [
@@ -83,6 +87,51 @@ const About = () => {
                 <h3 className="font-semibold text-lg text-foreground mb-2">📋 تسهيلات تمويلية</h3>
                 <p className="text-muted-foreground text-sm">نساعدك في إجراءات التمويل والحجز</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Gallery */}
+        <section className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
+            مشاريعنا
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card-brand overflow-hidden hover-lift">
+              <img 
+                src={project1} 
+                alt="مشروع الرمز العقارية" 
+                className="w-full h-64 object-cover rounded-xl mb-4"
+              />
+              <h3 className="text-xl font-bold text-foreground mb-2">وحدات سكنية متميزة</h3>
+              <p className="text-muted-foreground">تصاميم عصرية بجودة عالية</p>
+            </div>
+            <div className="card-brand overflow-hidden hover-lift">
+              <img 
+                src={project2} 
+                alt="مشروع الرمز العقارية" 
+                className="w-full h-64 object-cover rounded-xl mb-4"
+              />
+              <h3 className="text-xl font-bold text-foreground mb-2">فلل راقية</h3>
+              <p className="text-muted-foreground">رفاهية وخصوصية لا مثيل لها</p>
+            </div>
+            <div className="card-brand overflow-hidden hover-lift">
+              <img 
+                src={project3} 
+                alt="مشروع الرمز العقارية" 
+                className="w-full h-64 object-cover rounded-xl mb-4"
+              />
+              <h3 className="text-xl font-bold text-foreground mb-2">مجمعات سكنية</h3>
+              <p className="text-muted-foreground">حياة متكاملة بكل وسائل الراحة</p>
+            </div>
+            <div className="card-brand overflow-hidden hover-lift">
+              <img 
+                src={project5} 
+                alt="مشروع الرمز العقارية" 
+                className="w-full h-64 object-cover rounded-xl mb-4"
+              />
+              <h3 className="text-xl font-bold text-foreground mb-2">مشاريع استثمارية</h3>
+              <p className="text-muted-foreground">عوائد مجزية ومستقبل آمن</p>
             </div>
           </div>
         </section>
