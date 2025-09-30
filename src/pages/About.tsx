@@ -7,10 +7,10 @@ import project5 from "@/assets/project-5.jpg";
 
 const About = () => {
   const achievements = [
-    { number: "٩٠+", label: "وحدة سكنية مباعة", icon: Building },
-    { number: "٥٠٠+", label: "عميل راضي", icon: Users },
-    { number: "٣", label: "مشاريع ناجحة", icon: TrendingUp },
-    { number: "٨+", label: "سنوات من الخبرة", icon: Award },
+    { number: "+40", label: "مشروع ناجح", icon: Building },
+    { number: "+8000", label: "وحدة سكنية مطورة", icon: TrendingUp },
+    { number: "+100,000", label: "م² مساحة مكتبية", icon: Building },
+    { number: "11", label: "جائزة عالمية 2025", icon: Award },
   ];
 
   return (
@@ -30,15 +30,23 @@ const About = () => {
         {/* Company Story */}
         <section className="mb-12 animate-fade-in">
           <div className="card-brand">
-            <h2 className="text-3xl md:text-4xl font-bold text-gradient-primary mb-4">
-              الرمز العقارية
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient-primary mb-6 text-center">
+              الرمز.. راحة تغنيك
             </h2>
-            <p className="text-lg leading-relaxed text-foreground/90 mb-4">
-              شركة الرمز عقارية عصرية تأسست عام ٢٠١٦ بقيادة عريقة وخبرة متراكمة في قطاعي العقارات والمقاوالت.
-            </p>
-            <p className="text-lg leading-relaxed text-foreground/90">
-              نتميز بتقديم خيارات متعددة تلبي احتياجات عملائنا المتنوعة، وتعتمد الرمز على مفهوم الراحة المرنة الذي يشكل أساس رؤيتنا في كل تفاصيل مشاريعها، مما يتيح لكل فرد تجربة الراحة على طريقته.
-            </p>
+            <div className="space-y-4 text-lg leading-relaxed text-foreground/90">
+              <p>
+                تأسست شركة الرمز للعقارات في عام 2016م بقيادة تحمل خبرة موروثة في مجال العقارات والمقاولات، وبكوادر بشرية طموحة وشابة تتبنى أهدافاً وتطلعات متجددة.
+              </p>
+              <p>
+                نظرتها إلى الأمام ووقودها شغفها في ترسيخ مفهومٌ جديد للبيئة المعمارية والمجتمعات السكنية في المملكة العربية السعودية.
+              </p>
+              <p>
+                نؤمن في الرمز بأن أمان الإنسان وسعادته في مسكنه، تنطلق من شعور داخلي بالراحة والطمأنينة عند رؤيته للخيارات السكنية ومدى توافقها مع رغباته وتطلعاته.
+              </p>
+              <p className="font-semibold text-primary">
+                ولذلك نحرص في مجتمعاتنا السكنية على مفهوم "رحابة الإعمار"، وهي تعني الفسحة كمنطلق للبناء، والحيوية كأساس للحياة، والاستقرار والسكينة كركيزة للعيش والاستمتاع.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -64,28 +72,61 @@ const About = () => {
           </div>
         </section>
 
+        {/* Awards Section */}
+        <section className="mb-12">
+          <div className="card-brand bg-gradient-to-br from-amber-500/10 via-primary/10 to-amber-600/10 border-2 border-amber-500/20">
+            <div className="text-center mb-6">
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full mb-4">
+                <Award className="w-12 h-12 text-white mx-auto" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gradient-primary mb-3">
+                إنجاز استثنائي
+              </h2>
+              <p className="text-xl text-foreground/90 leading-relaxed">
+                حققت شركة الرمز للعقارات إنجازًا استثنائيًا بحصولها على <span className="font-bold text-amber-600">11 جائزة</span> خلال حفل <span className="font-semibold">Arabian Property Awards 2025</span> التابع لـ <span className="font-semibold">International Property Awards</span>
+              </p>
+            </div>
+            <div className="bg-card/50 rounded-xl p-6 border border-border">
+              <p className="text-lg text-foreground/80 text-center">
+                لتصبح من أكثر الشركات العقارية السعودية حصولًا على جوائز عالمية، ويؤكد هذا الإنجاز المكانة الرائدة للرمز كأحد أبرز مطوري المشاريع السكنية والتجارية في المملكة.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Services */}
         <section className="mb-12">
           <div className="card-brand bg-gradient-to-br from-primary/5 to-accent/5">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              أدواتنا وخدماتنا
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
+              خدماتنا ومجتمعاتنا
             </h2>
+            <p className="text-lg text-foreground/90 leading-relaxed mb-6 text-center max-w-3xl mx-auto">
+              نضع في الرمز نصب أعيننا تكوين مجتمعٍ حضري متكامل؛ فكافة مشاريعنا "الشقق السكنية، التاون هاوس، الفلل السكنية، والأدوار السكنية" نقدم فيها خيارات متنوِّعة تتناسب مع مختلف أنماط الحياة لعملائنا.
+            </p>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-card rounded-xl p-4 border border-border">
-                <h3 className="font-semibold text-lg text-foreground mb-2">🏘️ بيع على الخارطة</h3>
-                <p className="text-muted-foreground text-sm">وحدات سكنية مميزة بأسعار تنافسية</p>
+              <div className="bg-card rounded-xl p-5 border border-border hover:border-primary transition-all hover-lift">
+                <h3 className="font-semibold text-lg text-foreground mb-2">🏘️ مشاريع سكنية متكاملة</h3>
+                <p className="text-muted-foreground text-sm">شقق، فلل، تاون هاوس، وأدوار سكنية في مواقع مميزة</p>
               </div>
-              <div className="bg-card rounded-xl p-4 border border-border">
-                <h3 className="font-semibold text-lg text-foreground mb-2">🏗️ تطوير عقاري</h3>
-                <p className="text-muted-foreground text-sm">مشاريع عقارية متكاملة ذات جودة عالية</p>
+              <div className="bg-card rounded-xl p-5 border border-border hover:border-primary transition-all hover-lift">
+                <h3 className="font-semibold text-lg text-foreground mb-2">🏗️ تطوير عقاري احترافي</h3>
+                <p className="text-muted-foreground text-sm">تصاميم عصرية وجودة عالية في التنفيذ</p>
               </div>
-              <div className="bg-card rounded-xl p-4 border border-border">
+              <div className="bg-card rounded-xl p-5 border border-border hover:border-primary transition-all hover-lift">
+                <h3 className="font-semibold text-lg text-foreground mb-2">🏢 مجمعات تجارية ومكتبية</h3>
+                <p className="text-muted-foreground text-sm">تدمج العملية بالرفاهية لقيادة أعمالكم بإمكانيات وفيرة</p>
+              </div>
+              <div className="bg-card rounded-xl p-5 border border-border hover:border-primary transition-all hover-lift">
                 <h3 className="font-semibold text-lg text-foreground mb-2">💡 استشارات عقارية</h3>
                 <p className="text-muted-foreground text-sm">إرشاد ومساعدة في اختيار الوحدة المثالية</p>
               </div>
-              <div className="bg-card rounded-xl p-4 border border-border">
+              <div className="bg-card rounded-xl p-5 border border-border hover:border-primary transition-all hover-lift">
                 <h3 className="font-semibold text-lg text-foreground mb-2">📋 تسهيلات تمويلية</h3>
                 <p className="text-muted-foreground text-sm">نساعدك في إجراءات التمويل والحجز</p>
+              </div>
+              <div className="bg-card rounded-xl p-5 border border-border hover:border-primary transition-all hover-lift">
+                <h3 className="font-semibold text-lg text-foreground mb-2">⚙️ إدارة المشاريع</h3>
+                <p className="text-muted-foreground text-sm">إدارة احترافية لضمان نجاح كل مشروع</p>
               </div>
             </div>
           </div>
@@ -142,9 +183,28 @@ const About = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               رؤيتنا
             </h2>
-            <p className="text-lg text-foreground/90 max-w-2xl mx-auto">
-              نسعى لنكون الخيار الأول في قطاع العقارات بالمملكة، من خلال تقديم مشاريع عقارية مبتكرة تجمع بين الجودة والراحة والتصميم العصري.
+            <p className="text-lg text-foreground/90 max-w-3xl mx-auto leading-relaxed">
+              نسعى لنكون الخيار الأول في قطاع العقارات بالمملكة، من خلال تقديم مشاريع عقارية مبتكرة تجمع بين الجودة والراحة والتصميم العصري، مع التركيز على بناء مجتمعات حضرية متكاملة تعزز جودة حياة ساكنيها.
             </p>
+          </div>
+        </section>
+
+        {/* Presence Section */}
+        <section className="mb-12">
+          <div className="card-brand bg-gradient-to-br from-primary/10 to-secondary/10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center">
+              حضورنا في المملكة
+            </h2>
+            <p className="text-lg text-foreground/90 text-center mb-6">
+              من عاصمة المملكة الرياض انطلقنا في عام 2016م؛ لنخلق حكايات من النجاحات ومسيرة من الإنجازات
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {['الرياض', 'جدة', 'الدمام', 'الخبر', 'بريدة'].map((city) => (
+                <span key={city} className="px-6 py-2 bg-primary/20 text-primary font-semibold rounded-full border border-primary/30">
+                  {city}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
