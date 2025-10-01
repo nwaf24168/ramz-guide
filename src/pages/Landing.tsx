@@ -35,24 +35,23 @@ const Landing = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 max-w-md mx-auto">
             <Link 
-              to="/about"
-              className="group bg-card border-2 border-primary/20 hover:border-primary rounded-2xl p-6 shadow-card hover:shadow-soft transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <Building2 className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
-                <span className="text-xl font-semibold text-foreground">حاب تعرف من حنّا</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                اكتشف قصتنا ومشاريعنا وإنجازاتنا
-              </p>
-            </Link>
-
-            <Link 
               to="/start"
               className="btn-hero group flex items-center justify-center gap-3 text-xl pulse-glow"
             >
               <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-              <span>خلني أبدأ على طول</span>
+              <span>ابدأ رحلتك الآن</span>
+            </Link>
+
+            <Link 
+              to="/about"
+              className="group bg-card/50 hover:bg-card border border-border hover:border-primary/30 rounded-xl p-4 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <div className="flex items-center justify-center gap-2">
+                <Building2 className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <span className="text-base font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                  تعرف علينا أكثر
+                </span>
+              </div>
             </Link>
           </div>
 

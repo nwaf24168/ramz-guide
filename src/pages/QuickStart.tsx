@@ -28,17 +28,17 @@ const QuickStart = () => {
   ];
 
   const salaryRanges = [
-    { id: "5000-10000", label: "٥,٠٠٠ - ١٠,٠٠٠ ريال" },
-    { id: "10000-15000", label: "١٠,٠٠٠ - ١٥,٠٠٠ ريال" },
-    { id: "15000-20000", label: "١٥,٠٠٠ - ٢٠,٠٠٠ ريال" },
-    { id: "20000+", label: "أكثر من ٢٠,٠٠٠ ريال" },
+    { id: "5000-10000", label: "5,000 - 10,000 ريال" },
+    { id: "10000-15000", label: "10,000 - 15,000 ريال" },
+    { id: "15000-20000", label: "15,000 - 20,000 ريال" },
+    { id: "20000+", label: "أكثر من 20,000 ريال" },
   ];
 
   const installmentRanges = [
     { id: "none", label: "ما عندي التزامات 🎉" },
-    { id: "1000-3000", label: "١,٠٠٠ - ٣,٠٠٠ ريال" },
-    { id: "3000-5000", label: "٣,٠٠٠ - ٥,٠٠٠ ريال" },
-    { id: "5000+", label: "أكثر من ٥,٠٠٠ ريال" },
+    { id: "1000-3000", label: "1,000 - 3,000 ريال" },
+    { id: "3000-5000", label: "3,000 - 5,000 ريال" },
+    { id: "5000+", label: "أكثر من 5,000 ريال" },
   ];
 
   const propertyTypes = [
@@ -87,45 +87,50 @@ const QuickStart = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border shadow-sm">
-        <div className="max-w-3xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between mb-3">
-            <Link to="/" className="text-primary hover:text-primary/80 transition-colors">
-              <ArrowLeft className="w-6 h-6" />
+      <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-xl border-b border-border/50 shadow-sm">
+        <div className="max-w-2xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between mb-2">
+            <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
+              <ArrowLeft className="w-5 h-5" />
             </Link>
-            <h1 className="text-lg font-bold text-foreground">رحلتك السريعة</h1>
-            <div className="w-6" />
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium text-muted-foreground">الخطوة {step} من 5</span>
+            </div>
+            <div className="w-5" />
           </div>
           {/* Progress Bar */}
-          <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-muted/50 rounded-full h-1.5 overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-500"
+              className="h-full bg-gradient-to-r from-primary via-primary to-accent transition-all duration-700 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-4 py-6 md:py-8">
+      <main className="max-w-2xl mx-auto px-4 py-8 md:py-12">
         {/* Step 1: Purpose */}
         {step === 1 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
                 وش ناوي عليه؟
               </h2>
+              <p className="text-muted-foreground">اختر الخيار اللي يناسبك</p>
             </div>
 
-            <div className="space-y-3 max-w-md mx-auto">
+            <div className="space-y-3">
               {purposes.map((purpose) => (
                 <button
                   key={purpose.id}
                   onClick={() => handlePurposeSelect(purpose.id)}
-                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all text-right group"
+                  className="w-full bg-card hover:bg-muted/50 border-2 border-border hover:border-primary rounded-xl p-5 transition-all duration-300 hover:scale-[1.02] active:scale-98 text-right group"
                 >
                   <div className="flex items-center gap-4">
-                    <purpose.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
-                    <span className="text-lg font-medium text-foreground">{purpose.label}</span>
+                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <purpose.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-lg font-semibold text-foreground">{purpose.label}</span>
                   </div>
                 </button>
               ))}
@@ -136,21 +141,22 @@ const QuickStart = () => {
         {/* Step 2: Salary */}
         {step === 2 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
                 كم راتبك الشهري؟
               </h2>
+              <p className="text-muted-foreground">اختر الفئة المناسبة</p>
             </div>
 
-            <div className="space-y-3 max-w-md mx-auto">
+            <div className="space-y-3">
               {salaryRanges.map((range) => (
                 <button
                   key={range.id}
                   onClick={() => handleSalarySelect(range.id)}
-                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
+                  className="w-full bg-card hover:bg-muted/50 border-2 border-border hover:border-primary rounded-xl p-5 transition-all duration-300 hover:scale-[1.02] active:scale-98 group"
                 >
                   <div className="text-center">
-                    <span className="text-xl font-medium text-foreground">{range.label}</span>
+                    <span className="text-xl font-semibold text-foreground font-latin">{range.label}</span>
                   </div>
                 </button>
               ))}
@@ -161,21 +167,22 @@ const QuickStart = () => {
         {/* Step 3: Installments */}
         {step === 3 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
                 عندك التزامات شهرية؟
               </h2>
+              <p className="text-muted-foreground">حدد الأقساط الشهرية</p>
             </div>
 
-            <div className="space-y-3 max-w-md mx-auto">
+            <div className="space-y-3">
               {installmentRanges.map((range) => (
                 <button
                   key={range.id}
                   onClick={() => handleInstallmentsSelect(range.id)}
-                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
+                  className="w-full bg-card hover:bg-muted/50 border-2 border-border hover:border-primary rounded-xl p-5 transition-all duration-300 hover:scale-[1.02] active:scale-98 group"
                 >
                   <div className="text-center">
-                    <span className="text-xl font-medium text-foreground">{range.label}</span>
+                    <span className="text-xl font-semibold text-foreground font-latin">{range.label}</span>
                   </div>
                 </button>
               ))}
@@ -186,22 +193,25 @@ const QuickStart = () => {
         {/* Step 4: Property Type */}
         {step === 4 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
                 وش نوع العقار؟
               </h2>
+              <p className="text-muted-foreground">اختر النوع المناسب لك</p>
             </div>
 
-            <div className="space-y-3 max-w-md mx-auto">
+            <div className="space-y-3">
               {propertyTypes.map((type) => (
                 <button
                   key={type.id}
                   onClick={() => handlePropertyTypeSelect(type.id)}
-                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
+                  className="w-full bg-card hover:bg-muted/50 border-2 border-border hover:border-primary rounded-xl p-5 transition-all duration-300 hover:scale-[1.02] active:scale-98 text-right group"
                 >
                   <div className="flex items-center gap-4">
-                    <type.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
-                    <span className="text-xl font-medium text-foreground">{type.label}</span>
+                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <type.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-xl font-semibold text-foreground">{type.label}</span>
                   </div>
                 </button>
               ))}
@@ -212,22 +222,25 @@ const QuickStart = () => {
         {/* Step 5: Job Type */}
         {step === 5 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
                 آخر سؤال.. وش طبيعة شغلك؟
               </h2>
+              <p className="text-muted-foreground">وبكذا نكون خلصنا 🎉</p>
             </div>
 
-            <div className="space-y-3 max-w-md mx-auto">
+            <div className="space-y-3">
               {jobTypes.map((job) => (
                 <button
                   key={job.id}
                   onClick={() => handleJobTypeSelect(job.id)}
-                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
+                  className="w-full bg-card hover:bg-muted/50 border-2 border-border hover:border-primary rounded-xl p-5 transition-all duration-300 hover:scale-[1.02] active:scale-98 text-right group"
                 >
                   <div className="flex items-center gap-4">
-                    <job.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
-                    <span className="text-xl font-medium text-foreground">{job.label}</span>
+                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <job.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-xl font-semibold text-foreground">{job.label}</span>
                   </div>
                 </button>
               ))}
