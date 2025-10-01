@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Home, TrendingUp, Sparkles, Briefcase, Shield, Award, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ArrowLeft, Home, TrendingUp, Sparkles, Briefcase, Shield, Award, Building2, Building, HomeIcon, Warehouse } from "lucide-react";
 
 type FormData = {
   purpose: string;
   salary: string;
   installments: string;
+  propertyType: string;
   jobType: string;
 };
 
@@ -18,6 +17,7 @@ const QuickStart = () => {
     purpose: "",
     salary: "",
     installments: "",
+    propertyType: "",
     jobType: "",
   });
 
@@ -27,35 +27,62 @@ const QuickStart = () => {
     { id: "upgrade", label: "ودي أرقى لشي أفضل ✨", icon: Sparkles },
   ];
 
+  const salaryRanges = [
+    { id: "5000-10000", label: "٥,٠٠٠ - ١٠,٠٠٠ ريال" },
+    { id: "10000-15000", label: "١٠,٠٠٠ - ١٥,٠٠٠ ريال" },
+    { id: "15000-20000", label: "١٥,٠٠٠ - ٢٠,٠٠٠ ريال" },
+    { id: "20000+", label: "أكثر من ٢٠,٠٠٠ ريال" },
+  ];
+
+  const installmentRanges = [
+    { id: "none", label: "ما عندي التزامات 🎉" },
+    { id: "1000-3000", label: "١,٠٠٠ - ٣,٠٠٠ ريال" },
+    { id: "3000-5000", label: "٣,٠٠٠ - ٥,٠٠٠ ريال" },
+    { id: "5000+", label: "أكثر من ٥,٠٠٠ ريال" },
+  ];
+
+  const propertyTypes = [
+    { id: "villa", label: "فيلا", icon: Home },
+    { id: "apartment", label: "شقة", icon: Building2 },
+    { id: "townhouse", label: "تاون هاوس", icon: HomeIcon },
+    { id: "floors", label: "أدوار", icon: Warehouse },
+  ];
+
   const jobTypes = [
     { id: "government", label: "حكومي", icon: Briefcase },
-    { id: "private", label: "خاص", icon: Briefcase },
+    { id: "private", label: "خاص", icon: Building },
     { id: "military", label: "عسكري", icon: Shield },
     { id: "retired", label: "متقاعد", icon: Award },
   ];
 
   const handlePurposeSelect = (purposeId: string) => {
     setFormData({ ...formData, purpose: purposeId });
-    setTimeout(() => setStep(2), 300);
+    setTimeout(() => setStep(2), 200);
+  };
+
+  const handleSalarySelect = (salaryId: string) => {
+    setFormData({ ...formData, salary: salaryId });
+    setTimeout(() => setStep(3), 200);
+  };
+
+  const handleInstallmentsSelect = (installmentsId: string) => {
+    setFormData({ ...formData, installments: installmentsId });
+    setTimeout(() => setStep(4), 200);
+  };
+
+  const handlePropertyTypeSelect = (propertyTypeId: string) => {
+    setFormData({ ...formData, propertyType: propertyTypeId });
+    setTimeout(() => setStep(5), 200);
   };
 
   const handleJobTypeSelect = (jobTypeId: string) => {
-    setFormData({ ...formData, jobType: jobTypeId });
+    const finalData = { ...formData, jobType: jobTypeId };
     setTimeout(() => {
-      // Navigate to units page with form data as state
-      navigate("/units", { state: formData });
-    }, 300);
+      navigate("/units", { state: finalData });
+    }, 200);
   };
 
-  const handleSalaryNext = () => {
-    if (formData.salary) setStep(3);
-  };
-
-  const handleInstallmentsNext = () => {
-    if (formData.installments) setStep(4);
-  };
-
-  const progress = (step / 4) * 100;
+  const progress = (step / 5) * 100;
 
   return (
     <div className="min-h-screen bg-background">
@@ -79,19 +106,17 @@ const QuickStart = () => {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-4 py-8 md:py-12">
-        {/* Intro */}
+      <main className="max-w-3xl mx-auto px-4 py-6 md:py-8">
+        {/* Step 1: Purpose */}
         {step === 1 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                خلنا نساعدك تلقى العقار اللي يناسبك
+            <div className="text-center mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                وش ناوي عليه؟
               </h2>
-              <p className="text-muted-foreground">بخطوات بسيطة 🙌</p>
             </div>
 
-            <div className="space-y-4">
-              <p className="text-lg font-semibold text-foreground mb-4">وش ناوي عليه؟</p>
+            <div className="space-y-3 max-w-md mx-auto">
               {purposes.map((purpose) => (
                 <button
                   key={purpose.id}
@@ -111,31 +136,24 @@ const QuickStart = () => {
         {/* Step 2: Salary */}
         {step === 2 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-8">
-              <User className="w-16 h-16 text-primary mx-auto mb-4" />
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                كم تقريباً راتبك الشهري؟
+            <div className="text-center mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                كم راتبك الشهري؟
               </h2>
-              <p className="text-muted-foreground">عشان نقدر نحدد الخيار المناسب لك</p>
             </div>
 
-            <div className="card-brand max-w-md mx-auto">
-              <Input
-                type="number"
-                placeholder="مثال: ١٢٠٠٠"
-                value={formData.salary}
-                onChange={(e) => setFormData({ ...formData, salary: e.target.value })}
-                className="text-center text-2xl h-16 mb-4"
-                dir="rtl"
-              />
-              <p className="text-sm text-muted-foreground text-center mb-6">ريال سعودي</p>
-              <Button
-                onClick={handleSalaryNext}
-                disabled={!formData.salary}
-                className="w-full bg-gradient-to-r from-primary to-accent text-white h-14 text-lg font-semibold hover:opacity-90"
-              >
-                التالي
-              </Button>
+            <div className="space-y-3 max-w-md mx-auto">
+              {salaryRanges.map((range) => (
+                <button
+                  key={range.id}
+                  onClick={() => handleSalarySelect(range.id)}
+                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
+                >
+                  <div className="text-center">
+                    <span className="text-xl font-medium text-foreground">{range.label}</span>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
         )}
@@ -143,52 +161,71 @@ const QuickStart = () => {
         {/* Step 3: Installments */}
         {step === 3 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                وعليك أقساط شهرية كم تقريباً؟
+            <div className="text-center mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                عندك التزامات شهرية؟
               </h2>
-              <p className="text-muted-foreground">إذا ما عندك أقساط، اكتب صفر</p>
             </div>
 
-            <div className="card-brand max-w-md mx-auto">
-              <Input
-                type="number"
-                placeholder="مثال: ٣٠٠٠"
-                value={formData.installments}
-                onChange={(e) => setFormData({ ...formData, installments: e.target.value })}
-                className="text-center text-2xl h-16 mb-4"
-                dir="rtl"
-              />
-              <p className="text-sm text-muted-foreground text-center mb-6">ريال سعودي</p>
-              <Button
-                onClick={handleInstallmentsNext}
-                disabled={!formData.installments}
-                className="w-full bg-gradient-to-r from-primary to-accent text-white h-14 text-lg font-semibold hover:opacity-90"
-              >
-                التالي
-              </Button>
+            <div className="space-y-3 max-w-md mx-auto">
+              {installmentRanges.map((range) => (
+                <button
+                  key={range.id}
+                  onClick={() => handleInstallmentsSelect(range.id)}
+                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
+                >
+                  <div className="text-center">
+                    <span className="text-xl font-medium text-foreground">{range.label}</span>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
         )}
 
-        {/* Step 4: Job Type */}
+        {/* Step 4: Property Type */}
         {step === 4 && (
           <div className="animate-fade-in">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                وش طبيعة شغلك؟
+            <div className="text-center mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                وش نوع العقار؟
               </h2>
-              <p className="text-muted-foreground">آخر خطوة وخلصنا! 🎯</p>
             </div>
 
-            <div className="space-y-4 max-w-md mx-auto">
+            <div className="space-y-3 max-w-md mx-auto">
+              {propertyTypes.map((type) => (
+                <button
+                  key={type.id}
+                  onClick={() => handlePropertyTypeSelect(type.id)}
+                  className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
+                >
+                  <div className="flex items-center gap-4">
+                    <type.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
+                    <span className="text-xl font-medium text-foreground">{type.label}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Step 5: Job Type */}
+        {step === 5 && (
+          <div className="animate-fade-in">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                آخر سؤال.. وش طبيعة شغلك؟
+              </h2>
+            </div>
+
+            <div className="space-y-3 max-w-md mx-auto">
               {jobTypes.map((job) => (
                 <button
                   key={job.id}
                   onClick={() => handleJobTypeSelect(job.id)}
                   className="w-full card-brand hover:scale-[1.02] active:scale-95 transition-all group"
                 >
-                  <div className="flex items-center justify-center gap-4">
+                  <div className="flex items-center gap-4">
                     <job.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
                     <span className="text-xl font-medium text-foreground">{job.label}</span>
                   </div>
